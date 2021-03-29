@@ -5,7 +5,7 @@ use::bevy::ecs::schedule::ShouldRun;
 fn main() {
     App::build()
         .add_plugins(DefaultPlugins)
-        .add_startup_system(hello_world.system())
+        .add_startup_system(startup.system())
         .add_startup_system(setup.system())
         .add_system(increment_frame.system())
         .add_system_set(
@@ -66,8 +66,8 @@ fn increment_frame(
     }
 }
 
-fn hello_world() {
-    println!("hello world!");
+fn startup() {
+    println!("startup");
 }
 
 fn run_on_frame<const RUNFRAME: i32>(query: Query<&CurrentFrame, With<Player>>, mut last_frame: Local<i32>) -> ShouldRun {
